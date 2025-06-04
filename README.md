@@ -1,0 +1,1 @@
+# Forecasting-Number-of-Patent-Applications-published-and-granted-based-on-historical-data-SARIMA-
