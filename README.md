@@ -3,6 +3,7 @@
 This repository contains a time series forecasting project that analyzes weekly counts of published and granted patents using the SARIMA (Seasonal ARIMA) model. The analysis is based on real patent data and includes data preprocessing, visualization, stationarity checks, decomposition, forecasting, outlier treatment, and model evaluation.
 
 **Dataset**
+
 Two CSV files are used:
 
 patent_published.csv: Contains publication dates of patents.
@@ -11,7 +12,7 @@ patent_granted.csv: Contains dates when patents were granted.
 
 Both files are assumed to have a PUBLICATION_DATE column.
 
-📊 Key Steps
+***Key Steps***
 ✅ 1. Data Preparation
 Load datasets using pandas from Google Drive.
 
