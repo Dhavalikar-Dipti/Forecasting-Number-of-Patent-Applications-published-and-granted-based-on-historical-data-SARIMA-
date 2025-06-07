@@ -46,3 +46,16 @@ Refit SARIMA models with cleaned data.
 Evaluate forecasts using:
 Mean Absolute Error (MAE)
 Mean Squared Error (MSE)
+
+
+# SARIMA Forecast - Patents Published
+
+![SARIMA Forecast - Published](Published.png)
+
+
+
+# SARIMA Forecast - Patents Granted
+
+![SARIMA Forecast - Granted](Granted.png)
+
+
