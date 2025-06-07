@@ -9,3 +9,5 @@ Integrated Moving Average (SARIMA) model to model weekly data for
 both patent grants and publications, generating future projections. The
 study also examines the impact of outlier handling on forecasting accuracy
 for both datasets.
+
+The data was retrieved through an api from official government website (data.gov.in).  
