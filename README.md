@@ -74,4 +74,4 @@ This analysis helps in:
 
 # Forecasted Grant-to-Publish Ratio (Next 52 Weeks)
 
-![SARIMA Forecast ](Published.png)
+![SARIMA Forecast ](ratio.png)
