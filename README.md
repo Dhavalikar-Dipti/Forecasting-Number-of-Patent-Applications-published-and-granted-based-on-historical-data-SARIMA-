@@ -1,59 +1,77 @@
 # Forecasting-Number-of-Patent-Applications-published-and-granted-based-on-historical-data-SARIMA-
 
-This repository contains a time series forecasting project that analyzes weekly counts of published and granted patents using the SARIMA (Seasonal ARIMA) model. The analysis is based on real patent data and includes data preprocessing, visualization, stationarity checks, decomposition, forecasting, outlier treatment, and model evaluation.
 
-## Dataset
+This project performs time series analysis and forecasting on patent data — comparing **Published** and **Granted** patent counts on a weekly basis using SARIMA models.
 
-The data was retrieved through an api from official government website (data.gov.in).  
+## Overview
 
-Two CSV files are used:
-patent_published.csv: Contains publication dates of patents.
+- Data includes weekly patent publication and grant records.
+- Goal: Understand seasonal trends, forecast future counts, and compare publishing-to-granting efficiency.
 
-patent_granted.csv: Contains dates when patents were granted.
+## Tools & Libraries
 
-Both files are assumed to have a PUBLICATION_DATE column.
+- Python, Pandas, NumPy, Matplotlib
+- `statsmodels` (SARIMA, ADF Test, Decomposition)
+- `sklearn.metrics` (MAE, MSE)
+- Google Colab + Drive
 
 ## Key Steps
 
-**1. Data Preparation**
+### Data Preprocessing
+- Converted `PUBLICATION_DATE` to datetime.
+- Resampled to weekly frequency.
+- Merged datasets for comparative analysis.
 
-Load datasets using pandas from Google Drive.
-Convert PUBLICATION_DATE to datetime format.
-Resample data weekly to calculate counts.
+### Time Series Decomposition
+- Used additive decomposition to isolate **trend**, **seasonality**, and **residuals**.
+- Found strong yearly seasonality in both published and granted patents.
 
-**2. Time Series Analysis**
+### SARIMA Forecasting
+- Granted Model: `SARIMA(1, 0, 1)(1, 1, 1, 52)`
+- Published Model: `SARIMA(2, 1, 2)(1, 1, 1, 52)`
+- Forecasted next **52 weeks** for both series.
 
-Visualize trends for both published and granted patents.
-Decompose time series using seasonal_decompose.
-Perform stationarity checks with the ADF (Augmented Dickey-Fuller) test.
-Identify seasonal patterns.
+### Outlier Detection
+- Used IQR method to detect and replace outliers with the **median**.
+- Improved model accuracy significantly.
 
-**3. Model Building**
+## Model Performance
 
-Fit SARIMA models using statsmodels for both published and granted series.
-Tune hyperparameters (p,d,q)(P,D,Q,s) based on ACF/PACF plots.
-Forecast patent trends for the next 52 weeks.
-Visualize forecast with confidence intervals.
+| Data Type | MAE (Before) | MSE (Before) | MAE (After) | MSE (After) |
+|-----------|--------------|--------------|-------------|-------------|
+| Granted   | 784.39       | 909,029.10   | 140.58      | 35,118.02   |
+| Published | 368.92       | 195,254.68   | 347.83      | 161,069.00  |
 
-**4. Outlier Detection**
+## Comparative Insights
 
-Detect outliers using the IQR (Interquartile Range) method.
-Replace detected outliers with the median.
-Refit SARIMA models with cleaned data.
+- **Trend Gap**: Published > Granted consistently.
+- **Ratio Analysis**:
+  - Avg. weekly **Published-to-Granted ratio** ≈ **1.6**
+  - Forecasted **Grant-to-Publish ratio** ≈ **0.62** (on avg)
+- Seasonal patterns repeat annually (52-week cycle).
+- Publishing shows more volatility; granted patents exhibit stable trends.
 
-**5. Evaluation**
+## Forecast Output (Next 52 Weeks)
 
-Evaluate forecasts using:
-Mean Absolute Error (MAE)
-Mean Squared Error (MSE)
+- Clear seasonal oscillations.
+- Reliable predictions for patent activity planning.
 
+## Files
 
-# SARIMA Forecast - Patents Published
+- `Time Series.ipynb`: Complete analysis and code.
+- `patent_published.csv`, `patent_granted.csv`: Input datasets.
+- `README.md`: This file!
 
-![SARIMA Forecast - Published](Published.png)
+## Conclusion
 
+This analysis helps in:
 
+- Understanding the patent pipeline (submission to approval).
+- Estimating backlog and processing efficiency.
+- Planning policy decisions or operational capacities based on data-driven forecasts.
 
-# SARIMA Forecast - Patents Granted
+---
 
-![SARIMA Forecast - Granted](Granted.png)
+# Forecasted Grant-to-Publish Ratio (Next 52 Weeks)
+
+![SARIMA Forecast ](Published.png)
